@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Pickup
+  - Container
+  - Grabber
+  - Submarine
+  - Ground
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Leak
+  - 
+  - Ground
+  - Item
+  - Player
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Air
+    uniqueID: 4096042671
+    locked: 0
+  - name: Background
+    uniqueID: 3818875309
+    locked: 0
+  - name: SubmarineInterior
+    uniqueID: 1309070995
+    locked: 0
+  - name: Foreground
+    uniqueID: 3169946651
+    locked: 0
+  - name: SubmarineExterior
+    uniqueID: 3332338597
+    locked: 0
