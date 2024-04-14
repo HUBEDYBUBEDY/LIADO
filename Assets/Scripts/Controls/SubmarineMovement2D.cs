@@ -58,8 +58,8 @@ public class SubmarineMovement2D : MonoBehaviour, ControlStation
     public void OnMove(InputAction.CallbackContext ctx) => move = ctx.ReadValue<Vector2>();
 
     public void OnUse(InputAction.CallbackContext ctx) {
-        if(ctx.performed) Debug.Log("Submarine pressed.");
-        else Debug.Log("Submarine released.");
+        // if(ctx.performed) Debug.Log("Submarine pressed.");
+        // else Debug.Log("Submarine released.");
     }
 
     public void Activate(PlayerMovement playerMovement) {}

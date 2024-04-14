@@ -5,12 +5,10 @@ public class PickupDrop : MonoBehaviour
 {
     [SerializeField] private Transform objectGrabPointTransform;
     [SerializeField] private Transform toolGrabPointTransform;
-    [SerializeField] private Collider2D self;
+    [SerializeField] private Collider2D self = null;
     [SerializeField] private GameObject targetObject;
     [SerializeField] private GameObject grabbedObject;
     [SerializeField] private GameObject targetContainer;
-    // Used for calculating throw velocity (can be removed later)
-    [SerializeField] private Rigidbody2D playerRigidbody;
 
     private ObjectGrabbable objectGrabbable;
     private PlayerMovement playerMovement;
@@ -32,7 +30,7 @@ public class PickupDrop : MonoBehaviour
                 } else {
                     // Store into tool holder
                     if(targetContainer.GetComponent<ToolHolder>().Store(grabbedObject)) {
-                        grabbedObject.GetComponent<ObjectGrabbable>().Drop(playerRigidbody.velocity, playerMovement);
+                        grabbedObject.GetComponent<ObjectGrabbable>().Drop(playerMovement);
                         Destroy(grabbedObject);
                     }
                 }
@@ -67,7 +65,7 @@ public class PickupDrop : MonoBehaviour
     public void Drop() {
         if(grabbedObject) {
             grabbedObject = null;
-            objectGrabbable.Drop(playerRigidbody.velocity, playerMovement);
+            objectGrabbable.Drop(playerMovement);
             objectGrabbable = null;
         }
     }
@@ -76,7 +74,7 @@ public class PickupDrop : MonoBehaviour
         // Debug.Log("Collision detected with" + col.gameObject.ToString());
 
         if(col.gameObject.tag == "Pickup") {
-            Physics2D.IgnoreCollision(self, col, true);
+            if(self != null) Physics2D.IgnoreCollision(self, col, true);
             targetObject = col.gameObject;
         } else if(col.gameObject.tag == "Container") {
             targetContainer = col.gameObject;

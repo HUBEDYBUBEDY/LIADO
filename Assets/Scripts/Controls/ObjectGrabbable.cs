@@ -5,9 +5,7 @@ public class ObjectGrabbable : MonoBehaviour
     [SerializeField] private Collider2D self;
     [SerializeField] private MonoBehaviour toolScript = null;
 
-    [SerializeField] private bool throwable = false;
     [SerializeField] private bool isTool = false;
-    [SerializeField] private float throwMagnitude = 10f;
     [SerializeField] private int value = 0;
 
     protected Rigidbody2D objectRigidbody;
@@ -40,16 +38,13 @@ public class ObjectGrabbable : MonoBehaviour
         self.enabled = false;
     }
 
-    public void Drop(Vector3 velocity, PlayerMovement playerMovement) {
+    public void Drop(PlayerMovement playerMovement) {
         transform.SetParent(null);
 
         // Reactivate objects' interaction with the scene
         // objectRigidbody.isKinematic = false;
         // objectRigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
         objectRigidbody.simulated = true;
-
-        // Add a force in the players current direction if throwable
-        if(throwable) objectRigidbody.AddForceAtPosition(velocity * throwMagnitude, transform.position, ForceMode2D.Impulse);
 
         // Deactivate tool script
         if(toolScript != null) {
